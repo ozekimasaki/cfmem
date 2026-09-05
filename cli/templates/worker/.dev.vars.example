@@ -1,0 +1,2 @@
+PROFILE_KEY_SECRET="replace-with-a-random-local-secret"
+ADMIN_API_TOKEN="replace-with-a-local-admin-token"

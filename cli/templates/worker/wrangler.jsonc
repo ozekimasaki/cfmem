@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "character-memory-dev",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-05",
+  "compatibility_flags": ["nodejs_compat"],
+  "ai": { "binding": "AI" },
+  "vectorize": [
+    { "binding": "MEMORY_VECTORS", "index_name": "character-memory-dev-memory-v1" }
+  ],
+  "r2_buckets": [
+    { "binding": "MEMORY_ARCHIVE", "bucket_name": "character-memory-dev-archive" }
+  ],
+  "durable_objects": {
+    "bindings": [
+      { "name": "MEMORY_PROFILES", "class_name": "MemoryProfile" }
+    ]
+  },
+  "exports": {
+    "MemoryProfile": {
+      "type": "durable-object",
+      "storage": "sqlite"
+    }
+  },
+  "vars": {
+    "MEMORY_NAMESPACE": "dev",
+    "EMBEDDING_MODEL": "@cf/qwen/qwen3-embedding-0.6b",
+    "EMBEDDING_DIMENSIONS": "1024",
+    "CHECKPOINT_TURNS": "8",
+    "IDLE_SECONDS": "120",
+    "MAX_BATCH_MESSAGES": "100",
+    "EXTRACTION_MIN_CONFIDENCE": "0.72"
+  },
+  "secrets": {
+    "required": ["PROFILE_KEY_SECRET", "ADMIN_API_TOKEN"]
+  },
+  "//": "Workflows (MEMORY_CONSOLIDATION / PROFILE_DELETION) are declared in Phase 5; `cfmem resources verify` reports them as missing until then."
+}
