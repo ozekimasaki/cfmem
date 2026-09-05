@@ -1,16 +1,15 @@
-# Cloudflare Character Memory — Greenfield Project Bundle
+# cfmem
 
-This bundle is for starting a brand-new Cloudflare AI-character memory project from zero.
+Bootstrap, resource-planning and operations CLI for a Cloudflare Workers memory service for AI characters: one SQLite-backed `MemoryProfile` Durable Object per `namespace × character × subject` profile, Japanese-friendly FTS search, and a versioned recall benchmark.
 
-## Read in this order
+## Layout
 
-1. `DESIGN.md` — architecture review, official-spec alignment, cost rationale.
-2. `GREENFIELD_IMPLEMENTATION.md` — authoritative greenfield build specification.
-3. `OFFICIAL_SOURCES.md` — official Cloudflare references reviewed.
-4. `cli/` — `cfmem` bootstrap/diagnostic/operations CLI.
-5. `skills/character-memory-builder/` — ChatGPT Skill for building and operating the project.
-
-`IMPLEMENTATION_RUNBOOK.md` is retained only as a pointer for compatibility with the previous bundle name.
+| Path | What it is |
+| --- | --- |
+| `cli/` | The `cfmem` CLI — 16 commands, Node ≥20, no runtime dependencies. |
+| `cli/templates/worker/` | Worker + Durable Object skeleton that `cfmem init` copies, plus the offline starter tests. |
+| `skills/character-memory-builder/` | Build/operate skill. `references/greenfield-implementation.md` is the authoritative build spec: naming, provisioning order, frozen schema, command surface, CI gates. |
+| `dist/skill.zip` | The skill packaged for upload. |
 
 ## Bootstrap
 
@@ -23,6 +22,4 @@ node src/cfmem.mjs init ../example-memory
 npm test
 ```
 
-`node src/cfmem.mjs help` and `skills/character-memory-builder/references/commands.md` cover the full command surface. `resources plan` only prints and `resources verify` only reads; remote access needs `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN`.
-
-Before remote deployment, follow the resource creation and verification order in `GREENFIELD_IMPLEMENTATION.md`.
+`node src/cfmem.mjs help` and `skills/character-memory-builder/references/commands.md` cover the full command surface. `resources plan` only prints and `resources verify` only reads; remote access needs `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN`. Create and verify resources in the order `resources plan` prints, and read `references/greenfield-implementation.md` before implementing beyond Phase 1.

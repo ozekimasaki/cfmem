@@ -1,8 +1,8 @@
 # Character Memory Worker — greenfield Phase 1 scaffold
 
-This scaffold is the first implementation milestone of `GREENFIELD_IMPLEMENTATION.md`.
+This scaffold is Phase 1 of the memory service: the authoritative core only.
 
-It intentionally starts with the authoritative core:
+It starts with:
 
 - SQLite-backed `MemoryProfile` Durable Object;
 - schema migration;
@@ -25,7 +25,7 @@ npm run types
 npm run dev
 ```
 
-Before any remote deployment, read `GREENFIELD_IMPLEMENTATION.md` and create resources in its specified order.
+Before any remote deployment, create the resources in the order recorded in `ops/resources-plan.txt` (written by `cfmem init`; regenerate with `cfmem resources plan --env <env>`).
 
 ## Tests
 

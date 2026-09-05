@@ -89,7 +89,7 @@ Reported metrics: Recall@5, Recall@10, Precision@5, zero-result rate, stale-memo
 
 ## Implementation contract
 
-Before implementing phases beyond the starter, read `references/greenfield-implementation.md` (the bundle root's `GREENFIELD_IMPLEMENTATION.md` is the authoritative copy; `IMPLEMENTATION_RUNBOOK.md` is a compatibility pointer to it). The specification defines the final CLI command surface, provisioning order, schema migrations, Workflow boundaries, deletion semantics, CI gates, and production acceptance tests.
+Before implementing phases beyond the starter, read `references/greenfield-implementation.md` — this is the authoritative build specification. It defines the final CLI command surface, provisioning order, schema migrations, Workflow boundaries, deletion semantics, CI gates, and production acceptance tests.
 
 ## Tests
 

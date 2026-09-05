@@ -195,7 +195,7 @@ function initProject(args) {
   console.log(`Created ${dest}`);
   console.log(`  app=${app} env=${envName} -> worker ${plan.names.worker}, index ${plan.names.vectorizeIndex}, bucket ${plan.names.r2Bucket}`);
   console.log("  ops/resources-plan.txt records the exact remote names and command order.");
-  console.log("Next: read GREENFIELD_IMPLEMENTATION.md and pass Phase 1 (SQLite + Japanese FTS) before adding AI/Vectorize.");
+  console.log("Next: run cfmem doctor, then pass Phase 1 (SQLite + Japanese FTS) before adding AI/Vectorize.");
 }
 
 function commandExists(cmd, cmdArgs = ["--version"]) {
